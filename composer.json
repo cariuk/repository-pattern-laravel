@@ -1,33 +1,22 @@
 {
     "name": "cariuk/repository-pattern-laravel",
-    "version": "1.0.1",
-    "description": "CRUD Wrapper for laravel apps",
-    "license": "MIT",
-    "keywords": [
-        "laravel",
-        "repository"
-    ],
-    "homepage": "https://github.com/cariuk/repository-pattern-laravel.git",
-    "authors": [
-        {
-            "name": "Muh Hade Mopilie",
-            "email": "hademopilie@gmail.com"
-        }
-    ],
-    "prefer-stable": true,
-    "minimum-stability": "dev",
+    "version": "1.0.4",
+    "description": "CRUD wrapper for laravel apps",
+    "type": "library",
     "require": {
         "php": ">=8.1",
         "laravel/framework": "^9.0"
     },
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-          "KlinikPintar\\": "src/"
+            "Cariuk\\RepositoryPatternLaravel\\": "src/"
         }
     },
-    "scripts": {
-        "fix": [
-            "php-cs-fixer fix . --rules=@Symfony"
-        ]
-    }
+    "authors": [
+        {
+            "name": "Hade Mopilie",
+            "email": "hademopilie@gmail.com"
+        }
+    ]
 }
