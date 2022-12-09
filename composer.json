@@ -1,6 +1,6 @@
 {
     "name": "cariuk/repository-pattern-laravel",
-    "version": "1.0.0-beta.1",
+    "version": "1.0.1",
     "description": "CRUD Wrapper for laravel apps",
     "license": "MIT",
     "keywords": [
