@@ -13,6 +13,7 @@
             "Cariuk\\RepositoryPatternLaravel\\": "src/"
         }
     },
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Hade Mopilie",
