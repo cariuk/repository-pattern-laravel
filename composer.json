@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Cariuk\\RepositoryPatternLaravelServiceProvider"
+                "Cariuk\\RepositoryPatternLaravel\\RepositoryPatternLaravelServiceProvider"
             ]
         }
     },
