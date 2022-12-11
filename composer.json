@@ -12,7 +12,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Cariuk\\RepositoryPatternLaravel": "src/"
+            "Cariuk\\RepositoryPatternLaravel\\": "src/"
         }
     },
     "autoload-dev": {
