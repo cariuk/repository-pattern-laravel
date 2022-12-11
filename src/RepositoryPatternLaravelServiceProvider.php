@@ -1,9 +1,9 @@
 <?php
 
-namespace cariuk;
+namespace Cariuk;
 
 use Illuminate\Support\ServiceProvider;
-use KlinikPintar\Commands\CreateRepositoryCommand;
+use Cariuk\Commands\CreateRepositoryCommand;
 
 class RepositoryPatternLaravelServiceProvider extends ServiceProvider
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace KlinikPintar;
+namespace Cariuk;
 
-use KlinikPintar\Traits\Creation;
-use KlinikPintar\Traits\Deletation;
-use KlinikPintar\Traits\Reading;
-use KlinikPintar\Traits\Relationable;
+use Cariuk\Traits\Creation;
+use Cariuk\Traits\Deletation;
+use Cariuk\Traits\Reading;
+use Cariuk\Traits\Relationable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class Repository implements
-    \KlinikPintar\Contracts\Repository,
-    \KlinikPintar\Contracts\Reading,
-    \KlinikPintar\Contracts\Creation,
-    \KlinikPintar\Contracts\Deletation
+    \Cariuk\Contracts\Repository,
+    \Cariuk\Contracts\Reading,
+    \Cariuk\Contracts\Creation,
+    \Cariuk\Contracts\Deletation
 {
     use Creation;
     use Deletation;

@@ -1,1 +1,79 @@
 <?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use {{ namespacedBaseRepository }};
+
+class {{ class }} extends {{ baseRepository }}
+{
+    /**
+     * model
+     *
+     * @var {{ namespacedModel }}
+     */
+    protected $model = {{ model }}::class;
+
+    /**
+     * fillable data model.
+     *
+     * @var array
+     */
+    protected $fillable = [];
+
+    /**
+     * paginationable.
+     *
+     * @var bool
+     */
+    protected $paginationable = false;
+
+    /**
+     * optional pagination.
+     *
+     * @var bool
+     */
+    protected $optionalPagination = true;
+
+    /**
+     * sortable.
+     *
+     * @var bool
+     */
+    protected $sortable = true;
+
+    /**
+     * field allowed to sort.
+     *
+     * @var array
+     */
+    protected $sortAllowedFields = ['id'];
+
+    /**
+     * default sort field.
+     *
+     * @var string
+     */
+    protected $defaultSortField = null;
+
+    /**
+     * relationable.
+     *
+     * @var bool
+     */
+    protected $relationable = true;
+
+    /**
+     * field allowed to get relation.
+     *
+     * @var array
+     */
+    protected $relationAllowed = [];
+
+    /**
+     * relation autoload.
+     *
+     * @var mixed
+     */
+    protected $relation = null;
+}

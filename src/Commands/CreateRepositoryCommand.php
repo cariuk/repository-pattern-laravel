@@ -1,6 +1,6 @@
 <?php
 
-namespace KlinikPintar\Commands;
+namespace Cariuk\Commands;
 
 use InvalidArgumentException;
 use Illuminate\Console\GeneratorCommand;
@@ -97,12 +97,12 @@ class CreateRepositoryCommand extends GeneratorCommand
         if ($soft_deleting) {
             $repository = [
                 'base_repository' => 'RepositorySoftDelete',
-                'namespacedBaseRepository' => 'KlinikPintar\RepositorySoftDelete',
+                'namespacedBaseRepository' => 'Cariuk\RepositorySoftDelete',
             ];
         } else {
             $repository = [
                 'base_repository' => 'Repository',
-                'namespacedBaseRepository' => 'KlinikPintar\Repository',
+                'namespacedBaseRepository' => 'Cariuk\Repository',
             ];
         }
 
