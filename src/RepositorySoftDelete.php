@@ -1,9 +1,9 @@
 <?php
 
-namespace KlinikPintar;
+namespace Cariuk;
 
-use KlinikPintar\Contracts\SoftDeletation as SoftDeletationContract;
-use KlinikPintar\Traits\SoftDeletation;
+use Cariuk\Contracts\SoftDeletation as SoftDeletationContract;
+use Cariuk\Traits\SoftDeletation;
 
 abstract class RepositorySoftDelete extends Repository implements SoftDeletationContract
 {

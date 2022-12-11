@@ -13,6 +13,14 @@
             "Cariuk\\RepositoryPatternLaravel\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cariuk\\RepositoryPatternLaravelServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Hade Mopilie",

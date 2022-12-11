@@ -1,6 +1,6 @@
 <?php
 
-namespace KlinikPintar\Contracts;
+namespace Cariuk\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

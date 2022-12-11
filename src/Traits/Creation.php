@@ -1,6 +1,6 @@
 <?php
 
-namespace KlinikPintar\Traits;
+namespace Cariuk\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
