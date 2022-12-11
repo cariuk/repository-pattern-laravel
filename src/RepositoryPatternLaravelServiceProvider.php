@@ -1,6 +1,6 @@
 <?php
 
-namespace KlinikPintar;
+namespace cariuk;
 
 use Illuminate\Support\ServiceProvider;
 use KlinikPintar\Commands\CreateRepositoryCommand;
