@@ -8,13 +8,6 @@ use {{ namespacedBaseRepository }};
 class {{ class }} extends {{ baseRepository }}
 {
     /**
-     * model
-     *
-     * @var {{ namespacedModel }}
-     */
-    protected $model = {{ model }}::class;
-
-    /**
      * fillable data model.
      *
      * @var array
@@ -76,4 +69,14 @@ class {{ class }} extends {{ baseRepository }}
      * @var mixed
      */
     protected $relation = null;
+
+    /**
+     * initialisation model
+     *
+     * @var {{ namespacedModel }}
+     */
+     public function __construct()
+     {
+         $this->model = {{ model }}::class;
+     }
 }

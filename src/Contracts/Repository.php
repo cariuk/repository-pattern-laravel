@@ -2,11 +2,15 @@
 
 namespace RepositoryPatternLaravel\Contracts;
 
+use App\Models\Outlet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 interface Repository
 {
+
+    public function __construct();
+
     /**
      * get model
      */
