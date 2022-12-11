@@ -7,7 +7,7 @@ use Illuminate\Console\GeneratorCommand;
 
 class CreateRepositoryCommand extends GeneratorCommand
 {
-    protected $signature = 'make:repository {model}';
+    protected $signature = 'make:repository {name} {model}';
 
     protected $description = 'Create a repository file';
 
@@ -32,7 +32,7 @@ class CreateRepositoryCommand extends GeneratorCommand
 
     protected function getNameInput()
     {
-        return str_replace('.', '/', trim($this->argument('model').'Repository'));
+        return str_replace('.', '/', trim($this->argument('name').'Repository'));
     }
 
     /**
