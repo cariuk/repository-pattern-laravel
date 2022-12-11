@@ -1,17 +1,28 @@
 {
     "name": "cariuk/repository-pattern-laravel",
-    "version": "1.0.6",
+    "version": "1.0.7Beta",
     "description": "CRUD wrapper for laravel apps",
     "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hade Mopilie",
+            "email": "hademopilie@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Cariuk\\RepositoryPatternLaravel": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cariuk\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=8.1",
         "laravel/framework": "^9.0"
-    },
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Cariuk\\RepositoryPatternLaravel\\": "src/"
-        }
     },
     "extra": {
         "laravel": {
@@ -21,10 +32,5 @@
         }
     },
     "minimum-stability": "dev",
-    "authors": [
-        {
-            "name": "Hade Mopilie",
-            "email": "hademopilie@gmail.com"
-        }
-    ]
+    "prefer-stable": true
 }
