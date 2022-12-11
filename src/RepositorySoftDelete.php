@@ -1,9 +1,9 @@
 <?php
 
-namespace Cariuk;
+namespace RepositoryPatternLaravel;
 
-use Cariuk\Contracts\SoftDeletation as SoftDeletationContract;
-use Cariuk\Traits\SoftDeletation;
+use RepositoryPatternLaravel\Contracts\SoftDeletation as SoftDeletationContract;
+use RepositoryPatternLaravel\Traits\SoftDeletation;
 
 abstract class RepositorySoftDelete extends Repository implements SoftDeletationContract
 {

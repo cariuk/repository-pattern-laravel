@@ -1,9 +1,9 @@
 <?php
 
-namespace Cariuk;
+namespace RepositoryPatternLaravel;
 
 use Illuminate\Support\ServiceProvider;
-use Cariuk\Commands\CreateRepositoryCommand;
+use RepositoryPatternLaravel\Commands\CreateRepositoryCommand;
 
 class RepositoryPatternLaravelServiceProvider extends ServiceProvider
 {

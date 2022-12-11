@@ -1,6 +1,6 @@
 <?php
 
-namespace Cariuk\Traits;
+namespace RepositoryPatternLaravel\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;

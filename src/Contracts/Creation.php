@@ -1,6 +1,6 @@
 <?php
 
-namespace Cariuk\Contracts;
+namespace RepositoryPatternLaravel\Contracts;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Http\FormRequest;
