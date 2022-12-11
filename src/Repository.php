@@ -34,11 +34,6 @@ abstract class Repository implements
      */
     protected $builder;
 
-    public function __construct(Builder $builder = null)
-    {
-        $this->builder = $builder;
-    }
-
     /**
      * get model for execution
      */
