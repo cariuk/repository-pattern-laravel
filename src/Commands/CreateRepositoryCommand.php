@@ -1,6 +1,6 @@
 <?php
 
-namespace Cariuk\Commands;
+namespace RepositoryPatternLaravel\Commands;
 
 use InvalidArgumentException;
 use Illuminate\Console\GeneratorCommand;
@@ -97,12 +97,12 @@ class CreateRepositoryCommand extends GeneratorCommand
         if ($soft_deleting) {
             $repository = [
                 'base_repository' => 'RepositorySoftDelete',
-                'namespacedBaseRepository' => 'Cariuk\RepositorySoftDelete',
+                'namespacedBaseRepository' => 'RepositoryPatternLaravel\RepositorySoftDelete',
             ];
         } else {
             $repository = [
                 'base_repository' => 'Repository',
-                'namespacedBaseRepository' => 'Cariuk\Repository',
+                'namespacedBaseRepository' => 'RepositoryPatternLaravel\Repository',
             ];
         }
 

@@ -1,19 +1,19 @@
 <?php
 
-namespace Cariuk;
+namespace RepositoryPatternLaravel;
 
-use Cariuk\Traits\Creation;
-use Cariuk\Traits\Deletation;
-use Cariuk\Traits\Reading;
-use Cariuk\Traits\Relationable;
+use RepositoryPatternLaravel\Traits\Creation;
+use RepositoryPatternLaravel\Traits\Deletation;
+use RepositoryPatternLaravel\Traits\Reading;
+use RepositoryPatternLaravel\Traits\Relationable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class Repository implements
-    \Cariuk\Contracts\Repository,
-    \Cariuk\Contracts\Reading,
-    \Cariuk\Contracts\Creation,
-    \Cariuk\Contracts\Deletation
+    \RepositoryPatternLaravel\Contracts\Repository,
+    \RepositoryPatternLaravel\Contracts\Reading,
+    \RepositoryPatternLaravel\Contracts\Creation,
+    \RepositoryPatternLaravel\Contracts\Deletation
 {
     use Creation;
     use Deletation;

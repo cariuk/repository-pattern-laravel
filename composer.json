@@ -12,12 +12,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Cariuk\\RepositoryPatternLaravel\\": "src/"
+            "RepositoryPatternLaravel\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cariuk\\Tests\\": "tests/"
+            "RepositoryPatternLaravel\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Cariuk\\RepositoryPatternLaravel\\RepositoryPatternLaravelServiceProvider"
+                "RepositoryPatternLaravel\\RepositoryPatternLaravelServiceProvider"
             ]
         }
     },
