@@ -10,7 +10,7 @@ interface Creation
     /**
      * create new object
      */
-    public function create(FormRequest $request): Model;
+    public function create(FormRequest | array $request): Model;
 
     /**
      * update object
