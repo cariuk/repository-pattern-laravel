@@ -1,5 +1,5 @@
 {
-    "name": "cariuk_repository-pattern-laravel",
+    "name": "cariuk/repository-pattern-laravel",
     "version": "1.0.9",
     "description": "CRUD wrapper for laravel apps",
     "type": "library",
