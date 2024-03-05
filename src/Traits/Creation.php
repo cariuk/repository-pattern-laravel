@@ -27,7 +27,7 @@ trait Creation
     /**
      * create.
      */
-    public function create(FormRequest $request): Model
+    public function create(FormRequest | array $request): Model
     {
         $object = new $this->model();
         $data = $request->only($this->getFillable('create'));
