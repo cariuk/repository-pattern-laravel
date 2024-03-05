@@ -192,7 +192,7 @@ trait Reading
         $usePagination = is_bool($shouldPaginate) ? $shouldPaginate : $this->shouldPaginate($request);
 
         if ($usePagination) {
-            $pagination = $builder->paginate(($request->limit || $request->perPage) ?: $this->paginatePerPage);
+            $pagination = $builder->paginate(($request->limit ?: $request->perPage) ?: $this->paginatePerPage);
             $pagination->appends($request->all());
             return $pagination;
         }
