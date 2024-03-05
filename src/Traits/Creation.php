@@ -17,20 +17,12 @@ trait Creation
     protected $fillable = [];
 
     /**
-     * get fiellable fields
-     */
-    protected function getFillable($method = null)
-    {
-        return $this->fillable;
-    }
-
-    /**
      * create.
      */
-    public function create(FormRequest | array $request): Model
+    public function create(FormRequest|array $request): Model
     {
         $object = new $this->model();
-        $data = $request->only($this->getFillable('create'));
+        $data = is_array($request) ? $request : $request->only($this->getFillable('create'));
         $object->fill($this->getDataSave($data, 'create'));
 
         DB::beginTransaction();
@@ -53,6 +45,24 @@ trait Creation
             DB::rollBack();
             throw new BadRequestHttpException($error->getMessage());
         }
+    }
+
+    /**
+     * get fiellable fields
+     */
+    protected function getFillable($method = null)
+    {
+        return $this->fillable;
+    }
+
+    /**
+     * get data for save action.
+     *
+     * @param string $action
+     */
+    public function getDataSave(array $data, $action): array
+    {
+        return $data;
     }
 
     /**
@@ -90,15 +100,5 @@ trait Creation
             DB::rollBack();
             throw new BadRequestHttpException($error->getMessage());
         }
-    }
-
-    /**
-     * get data for save action.
-     *
-     * @param string $action
-     */
-    public function getDataSave(array $data, $action): array
-    {
-        return $data;
     }
 }
