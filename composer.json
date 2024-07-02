@@ -1,6 +1,5 @@
 {
-    "name": "cariuk-repository-pattern-laravel",
-    "version": "1.0.12",
+    "name" : "cariuk/laravel-repository-pattern",
     "description": "CRUD wrapper for laravel apps",
     "type": "library",
     "license": "MIT",
@@ -22,7 +21,7 @@
     },
     "require": {
         "php": ">=8.1",
-        "laravel/framework": "^9.0 || ^10.0"
+        "laravel/framework": "^11.0"
     },
     "extra": {
         "laravel": {
