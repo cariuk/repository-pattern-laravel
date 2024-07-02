@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "name" : "cariuk/laravel-repository-pattern",
     "description": "CRUD wrapper for laravel apps",
     "type": "library",
     "license": "MIT",
