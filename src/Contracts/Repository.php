@@ -2,27 +2,30 @@
 
 namespace RepositoryPatternLaravel\Contracts;
 
-use App\Models\Outlet;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
 interface Repository
 {
-
-    public function __construct();
-
     /**
-     * get model
+     * Get the model instance
+     *
+     * @return Model
      */
-    public function getModel();
+    public function getModel(): Model;
 
     /**
-     * set query builder
+     * Set query builder
+     *
+     * @param Builder $builder
+     * @return void
      */
     public function setBuilder(Builder $builder): void;
 
     /**
-     * get query builder
+     * Get query builder
+     *
+     * @return Builder
      */
     public function getBuilder(): Builder;
 }
