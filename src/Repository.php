@@ -2,6 +2,10 @@
 
 namespace RepositoryPatternLaravel;
 
+use RepositoryPatternLaravel\Contracts\ExceptionFactoryInterface;
+use RepositoryPatternLaravel\Contracts\TransactionManagerInterface;
+use RepositoryPatternLaravel\Infrastructure\LaravelExceptionFactory;
+use RepositoryPatternLaravel\Infrastructure\LaravelTransactionManager;
 use RepositoryPatternLaravel\Traits\Creation;
 use RepositoryPatternLaravel\Traits\Deletation;
 use RepositoryPatternLaravel\Traits\Reading;
@@ -21,29 +25,63 @@ abstract class Repository implements
     use Relationable;
 
     /**
-     * model
+     * Eloquent model class name
      *
-     * @var \Illuminate\Database\Eloquent\Model
+     * @var string
      */
-    protected $model;
+    protected string $model;
 
     /**
-     * builder
+     * Query builder instance
      *
-     * @var \Illuminate\Database\Eloquent\Builder $builder
+     * @var Builder|null
      */
-    protected $builder;
+    protected ?Builder $builder = null;
 
     /**
-     * get model for execution
+     * Transaction manager instance
+     *
+     * @var TransactionManagerInterface
      */
-    public function getModel()
-    {
-        return $this->model;
+    protected TransactionManagerInterface $transactionManager;
+
+    /**
+     * Exception factory instance
+     *
+     * @var ExceptionFactoryInterface
+     */
+    protected ExceptionFactoryInterface $exceptionFactory;
+
+    /**
+     * Repository constructor
+     *
+     * Implements proper dependency injection following DIP
+     */
+    public function __construct(
+        ?TransactionManagerInterface $transactionManager = null,
+        ?ExceptionFactoryInterface $exceptionFactory = null
+    ) {
+        // Use default Laravel implementations if not provided
+        $this->transactionManager = $transactionManager ?? new LaravelTransactionManager();
+        $this->exceptionFactory = $exceptionFactory ?? new LaravelExceptionFactory();
     }
 
     /**
-     * set query builder
+     * Get model instance
+     *
+     * @return Model
+     */
+    public function getModel(): Model
+    {
+        $modelClass = $this->model;
+        return new $modelClass();
+    }
+
+    /**
+     * Set query builder
+     *
+     * @param Builder $builder
+     * @return void
      */
     public function setBuilder(Builder $builder): void
     {
@@ -51,10 +89,38 @@ abstract class Repository implements
     }
 
     /**
-     * get query builder
+     * Get query builder
+     *
+     * @return Builder
      */
     public function getBuilder(): Builder
     {
-        return $this->builder ?? $this->getModel()::query();
+        if ($this->builder instanceof Builder) {
+            return $this->builder;
+        }
+
+        /** @var class-string<Model> $modelClass */
+        $modelClass = $this->model;
+        return $modelClass::query();
+    }
+
+    /**
+     * Get transaction manager
+     *
+     * @return TransactionManagerInterface
+     */
+    protected function getTransactionManager(): TransactionManagerInterface
+    {
+        return $this->transactionManager;
+    }
+
+    /**
+     * Get exception factory
+     *
+     * @return ExceptionFactoryInterface
+     */
+    protected function getExceptionFactory(): ExceptionFactoryInterface
+    {
+        return $this->exceptionFactory;
     }
 }
