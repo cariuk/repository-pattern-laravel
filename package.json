@@ -1,0 +1,37 @@
+{
+  "name": "laravel-repository-pattern",
+  "version": "3.0.0",
+  "description": "A flexible and powerful Laravel package implementing the Repository Pattern with SOLID principles",
+  "private": true,
+  "scripts": {
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:patch": "standard-version --release-as patch",
+    "release:first": "standard-version --first-release",
+    "release:dry-run": "standard-version --dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cariuk/repository-pattern-laravel.git"
+  },
+  "keywords": [
+    "laravel",
+    "repository",
+    "repository-pattern",
+    "crud",
+    "eloquent",
+    "php8",
+    "solid",
+    "dependency-injection"
+  ],
+  "author": "Hade Mopilie <hademopilie@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cariuk/repository-pattern-laravel/issues"
+  },
+  "homepage": "https://github.com/cariuk/repository-pattern-laravel#readme",
+  "devDependencies": {
+    "standard-version": "^9.5.0"
+  }
+}
