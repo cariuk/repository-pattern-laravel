@@ -7,64 +7,70 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use RepositoryPatternLaravel\ValueObjects\SortDirection;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 trait Reading
 {
     /**
-     * paginationable.
+     * Enable/disable pagination
      *
      * @var bool
      */
-    protected $paginationable = true;
+    protected bool $paginationable = true;
 
     /**
-     * optional pagination.
+     * Allow pagination to be optional via request
      *
      * @var bool
      */
-    protected $optionalPagination = false;
+    protected bool $optionalPagination = false;
 
     /**
-     * pagination per page.
+     * Number of items per page
      *
      * @var int
      */
-    protected $paginatePerPage = 10;
+    protected int $paginatePerPage = 10;
 
     /**
-     * sortable.
+     * Enable/disable sorting
      *
      * @var bool
      */
-    protected $sortable = true;
+    protected bool $sortable = true;
 
     /**
-     * field allowed to sort.
+     * Fields allowed for sorting
      *
-     * @var array
+     * @var array<string>
      */
-    protected $sortAllowedFields = ['id'];
+    protected array $sortAllowedFields = ['id'];
 
     /**
-     * default sort field.
+     * Default sort field
      *
-     * @var string
+     * @var string|null
      */
-    protected $defaultSortField = null;
+    protected ?string $defaultSortField = null;
 
     /**
-     * default sort descending.
+     * Default sort direction (descending)
      *
      * @var bool
      */
-    protected $defaultSortDescending = false;
+    protected bool $defaultSortDescending = false;
 
     /**
-     * get list of object
+     * Get list of records with filtering, sorting, and pagination
+     *
+     * @param Request $request
+     * @param bool|null $shouldPaginate
+     * @return Collection|LengthAwarePaginator
+     * @throws \RuntimeException
      */
-    public function getList(Request $request, bool $shouldPaginate = null): Collection | LengthAwarePaginator
+    public function getList(Request $request, ?bool $shouldPaginate = null): Collection | LengthAwarePaginator
     {
         if (!method_exists($this, 'getBuilder')) {
             throw new \RuntimeException('No method getBuilder exists on main class');
@@ -83,11 +89,16 @@ trait Reading
     }
 
     /**
-     * get list of object
+     * Get detail of a specific record
      *
-     * @throws App\Exceptions\ResourceNotFound
+     * @param Request $request
+     * @param int|string $id
+     * @param \Closure|null $modifier
+     * @param bool $skipDefaultFilter
+     * @return Model
+     * @throws NotFoundHttpException
      */
-    public function getDetail(Request $request, $id, \Closure $modifier = null, $skipDefaultFilter = false): Model
+    public function getDetail(Request $request, int|string $id, ?\Closure $modifier = null, bool $skipDefaultFilter = false): Model
     {
         if (!method_exists($this, 'getBuilder')) {
             throw new \RuntimeException('No method getBuilder exists on main class');
@@ -112,7 +123,7 @@ trait Reading
         $object = $builder->first();
 
         if (!$object) {
-            throw new  NotFoundHttpException(class_basename($this->model) . " with id: {$id} is not found");
+            throw new NotFoundHttpException(class_basename($this->model) . " with id: {$id} is not found");
         }
 
         return $object;
@@ -165,23 +176,20 @@ trait Reading
     }
 
     /**
-     * get sort.
+     * Get sort direction
+     *
+     * @param Request $request
+     * @return string
+     * @throws BadRequestHttpException
      */
     protected function getSort(Request $request): string
     {
         if ($request->has('descending')) {
-            if ('true' === $request->descending) {
-                return 'DESC';
-            }
-
-            if ('false' === $request->descending) {
-                return 'ASC';
-            }
-
-            throw new BadRequestHttpException('descending should string of true or false');
+            $direction = SortDirection::fromString($request->descending);
+            return $direction->value;
         }
 
-        return $this->defaultSortDescending ? 'DESC' : 'ASC';
+        return SortDirection::fromBoolean($this->defaultSortDescending)->value;
     }
 
     /**

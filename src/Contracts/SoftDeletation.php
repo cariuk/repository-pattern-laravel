@@ -12,7 +12,7 @@ interface SoftDeletation
     /**
      * get list of trash object
      */
-    public function getTrashList(Request $request, bool $houldPaginate): Collection | LengthAwarePaginator;
+    public function getTrashList(Request $request, bool $shouldPaginate): Collection | LengthAwarePaginator;
 
     /**
      * force delete object

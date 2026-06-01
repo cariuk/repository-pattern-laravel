@@ -1,14 +1,40 @@
 {
-    "name" : "cariuk/laravel-repository-pattern",
-    "description": "CRUD wrapper for laravel apps",
+    "name": "cariuk/laravel-repository-pattern",
+    "description": "A flexible and powerful Laravel package implementing the Repository Pattern with SOLID principles, featuring auto-detection, dependency injection, CRUD operations, filtering, sorting, pagination, and soft deletes support.",
+    "keywords": [
+        "laravel",
+        "repository",
+        "repository-pattern",
+        "crud",
+        "eloquent",
+        "laravel-12",
+        "php8",
+        "solid",
+        "dependency-injection",
+        "soft-deletes"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Hade Mopilie",
-            "email": "hademopilie@gmail.com"
+            "email": "hademopilie@gmail.com",
+            "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/cariuk/repository-pattern-laravel",
+    "support": {
+        "issues": "https://github.com/cariuk/repository-pattern-laravel/issues",
+        "source": "https://github.com/cariuk/repository-pattern-laravel"
+    },
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0|^11.0",
+        "orchestra/testbench": "^8.0|^9.0"
+    },
     "autoload": {
         "psr-4": {
             "RepositoryPatternLaravel\\": "src/"
@@ -29,6 +55,11 @@
                 "RepositoryPatternLaravel\\RepositoryPatternLaravelServiceProvider"
             ]
         }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

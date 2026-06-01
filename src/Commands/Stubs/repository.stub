@@ -4,79 +4,110 @@ namespace {{ namespace }};
 
 use {{ namespacedModel }};
 use {{ namespacedBaseRepository }};
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class {{ class }} extends {{ baseRepository }}
 {
     /**
-     * fillable data model.
-     *
-     * @var array
-     */
-    protected $fillable = [];
-
-    /**
-     * paginationable.
-     *
-     * @var bool
-     */
-    protected $paginationable = false;
-
-    /**
-     * optional pagination.
-     *
-     * @var bool
-     */
-    protected $optionalPagination = true;
-
-    /**
-     * sortable.
-     *
-     * @var bool
-     */
-    protected $sortable = true;
-
-    /**
-     * field allowed to sort.
-     *
-     * @var array
-     */
-    protected $sortAllowedFields = ['id'];
-
-    /**
-     * default sort field.
+     * Model class name
      *
      * @var string
      */
-    protected $defaultSortField = null;
+    protected string $model = {{ model }}::class;
 
     /**
-     * relationable.
+     * Override fillable fields (optional)
+     *
+     * By default, fillable is automatically taken from the model.
+     * Only uncomment and set this if you need different fillable for repository.
+     *
+     * @var array<string>|null
+     */
+    // protected ?array $fillable = ['name', 'email'];
+
+    /**
+     * Enable/disable pagination
      *
      * @var bool
      */
-    protected $relationable = true;
+    protected bool $paginationable = true;
 
     /**
-     * field allowed to get relation.
+     * Allow pagination to be optional via request
      *
-     * @var array
+     * @var bool
      */
-    protected $relationAllowed = [];
+    protected bool $optionalPagination = false;
 
     /**
-     * relation autoload.
+     * Number of items per page
      *
-     * @var mixed
+     * @var int
      */
-    protected $relation = null;
+    protected int $paginatePerPage = 10;
 
     /**
-     * initialisation model
+     * Enable/disable sorting
      *
-     * @var {{ namespacedModel }}
+     * @var bool
      */
-     public function __construct()
-     {
-         $this->model = {{ model }}::class;
-     }
+    protected bool $sortable = true;
+
+    /**
+     * Fields allowed for sorting
+     *
+     * @var array<string>
+     */
+    protected array $sortAllowedFields = ['id'];
+
+    /**
+     * Default sort field
+     *
+     * @var string|null
+     */
+    protected ?string $defaultSortField = null;
+
+    /**
+     * Default sort direction (descending)
+     *
+     * @var bool
+     */
+    protected bool $defaultSortDescending = false;
+
+    /**
+     * Enable/disable eager loading
+     *
+     * @var bool
+     */
+    protected bool $relationable = false;
+
+    /**
+     * Relationships allowed to be loaded
+     *
+     * @var array<string>
+     */
+    protected array $relationAllowed = [];
+
+    /**
+     * Apply custom filters to the query
+     *
+     * Override this method to add your custom filters
+     *
+     * @param Request $request
+     * @param Builder $builder
+     * @return void
+     */
+    protected function applyFilter(Request $request, Builder &$builder): void
+    {
+        // Example: Search filter
+        // if ($request->filled('search')) {
+        //     $builder->where('name', 'like', '%' . $request->search . '%');
+        // }
+
+        // Example: Status filter
+        // if ($request->filled('status')) {
+        //     $builder->where('status', $request->status);
+        // }
+    }
 }

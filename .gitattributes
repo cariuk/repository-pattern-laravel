@@ -1,0 +1,36 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.php text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.stub text eol=lf
+
+# Documentation
+*.md text eol=lf diff=markdown
+LICENSE text eol=lf
+README.md text eol=lf
+
+# Composer
+composer.json text eol=lf
+composer.lock text eol=lf -diff
+
+# Git
+.gitattributes text eol=lf
+.gitignore text eol=lf
+
+# Exclude from export
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.idea export-ignore
+/tests export-ignore
+/.editorconfig export-ignore
+/.php-cs-fixer.php export-ignore
+/phpunit.xml export-ignore
+/phpunit.xml.dist export-ignore
+/.github export-ignore
+/OOP_IMPROVEMENTS.md export-ignore
+/COMMAND_IMPROVEMENTS.md export-ignore
+/FILLABLE_AUTO_DETECTION.md export-ignore
+/.DS_Store export-ignore
