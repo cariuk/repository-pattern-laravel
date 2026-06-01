@@ -1,41 +1,14 @@
-# Command & Stub Improvements
+# Repository Command & Stub Improvements
 
 ## Overview
 
-The `make:repository` command stub has been updated to follow modern PHP 8.1+ standards and align with the OOP refactoring.
+The `make:repository` command generates modern repository classes following PHP 8.1+ standards with full type safety and comprehensive configuration options. Compatible with **Laravel 10.x, 11.x, and 12.x**.
 
 ---
 
-## Changes Made to Repository Stub
+## What's New in the Repository Stub
 
-### Before (Old Stub)
-
-```php
-class UserRepository extends Repository
-{
-    protected $fillable = [];
-    protected $paginationable = false;
-    protected $relation = null; // Unused property
-
-    public function __construct()
-    {
-        $this->model = User::class;
-    }
-}
-```
-
-**Problems:**
-- ❌ No type hints
-- ❌ Constructor doesn't call parent (missing DI)
-- ❌ Unused properties (`$relation`)
-- ❌ Missing `$paginatePerPage` property
-- ❌ Missing `$defaultSortDescending` property
-- ❌ No `applyFilter()` method template
-- ❌ Poor documentation
-
----
-
-### After (New Stub)
+### Modern Repository Class Structure
 
 ```php
 class UserRepository extends Repository
@@ -141,20 +114,17 @@ class UserRepository extends Repository
 }
 ```
 
-**Improvements:**
-- ✅ All properties have type hints
-- ✅ Modern PHP 8.1+ syntax
-- ✅ Property initialization inline (no constructor needed)
-- ✅ Complete property set (all available options)
-- ✅ `applyFilter()` method with examples
-- ✅ Better documentation with PHPDoc
-- ✅ Generic type annotations (`array<string>`)
-- ✅ Removed unused properties
-- ✅ Auto-imports for `Builder` and `Request`
+**Key Features:**
+- ✅ Full type safety with PHP 8.1+ syntax
+- ✅ No constructor needed for simple repositories
+- ✅ Complete property documentation with PHPDoc
+- ✅ Built-in `applyFilter()` method template
+- ✅ Auto-imports for common classes
+- ✅ Compatible with Laravel 10.x, 11.x, and 12.x
 
 ---
 
-## Usage Examples
+## Command Usage
 
 ### Basic Repository
 
@@ -345,99 +315,65 @@ class UserRepository extends Repository
 
 ---
 
-## Benefits of New Stub
-
-### 1. Better IDE Support
-- Full autocomplete
-- Type checking
-- Refactoring tools work properly
-
-### 2. Compile-Time Safety
-- Type errors caught before runtime
-- No more `$paginationable = 'true'` (string instead of bool)
-
-### 3. Self-Documenting
-- All available options visible
-- Clear documentation for each property
-- Examples included
-
-### 4. Modern PHP
-- Uses PHP 8.1+ features
-- Property type declarations
-- Inline initialization
-- Nullable types
-
-### 5. Less Boilerplate
-- No constructor needed for simple cases
-- Properties initialized inline
-- Clean and concise
-
----
-
-## Command Details
+## Command Reference
 
 ### Signature
 ```bash
 php artisan make:repository {name} {model}
 ```
 
-### Arguments
-- `{name}` - Repository name (without "Repository" suffix)
+**Arguments:**
+- `{name}` - Repository class name (without "Repository" suffix)
 - `{model}` - Model class name
 
-### Examples
+**Examples:**
 ```bash
-# Creates UserRepository
+# Basic repository
 php artisan make:repository User User
 
-# Creates PostRepository
-php artisan make:repository Post Post
-
-# Creates Admin/UserRepository (nested)
+# Nested repository
 php artisan make:repository Admin.User User
 
 # Auto-detects SoftDeletes
-php artisan make:repository Product Product  # extends RepositorySoftDelete if SoftDeletes used
+php artisan make:repository Product Product
 ```
 
-### Generated Location
-```
-app/
-└── Repositories/
-    ├── UserRepository.php
-    ├── PostRepository.php
-    └── Admin/
-        └── UserRepository.php
-```
+**Output Location:** `app/Repositories/{Name}Repository.php`
 
 ---
 
-## Testing Generated Repositories
-
-After generating a repository, test it:
+## Using in Controllers
 
 ```php
 use App\Repositories\UserRepository;
 
-// In your controller
 class UserController extends Controller
 {
-    public function __construct(
-        protected UserRepository $repository
-    ) {}
+    public function __construct(protected UserRepository $repository) {}
 
     public function index(Request $request)
     {
-        // Automatic pagination, sorting, filtering, and eager loading
         return $this->repository->getList($request);
     }
 }
 ```
 
-Test with URL parameters:
+**API Example:**
 ```
-GET /users?page=2&limit=20&sort=name&descending=true&search=john&status=active&with=posts,profile
+GET /users?page=2&limit=20&sort=name&descending=true&search=john&with=posts
 ```
+
+---
+
+## Benefits
+
+| Feature | Description |
+|---------|-------------|
+| **Type Safety** | Full PHP 8.1+ type hints prevent runtime errors |
+| **IDE Support** | Complete autocomplete and refactoring tools |
+| **Self-Documenting** | All options visible with comprehensive PHPDoc |
+| **Less Boilerplate** | No constructor needed for simple cases |
+| **Modern PHP** | Uses latest PHP 8.1+ features and best practices |
 
 ---
 
@@ -466,14 +402,24 @@ php artisan make:model User
 
 ---
 
-## Conclusion
+## Laravel Version Compatibility
 
-The improved stub provides:
-- ✅ Modern PHP 8.1+ syntax
-- ✅ Full type safety
-- ✅ Better documentation
-- ✅ Complete feature set out of the box
-- ✅ Examples for common patterns
-- ✅ 100% backward compatible
+| Laravel Version | PHP Version | Status |
+|----------------|-------------|--------|
+| Laravel 12.x | PHP 8.2+ | ✅ Fully Supported |
+| Laravel 11.x | PHP 8.2+ | ✅ Fully Supported |
+| Laravel 10.x | PHP 8.1+ | ✅ Fully Supported |
 
-All new repositories will be generated with best practices by default!
+---
+
+## Summary
+
+The `make:repository` command generates production-ready repository classes with:
+- ✅ Modern PHP 8.1+ syntax with full type safety
+- ✅ Complete configuration options out of the box
+- ✅ Built-in filter method template with examples
+- ✅ Automatic soft delete detection
+- ✅ 100% backward compatible with older code
+- ✅ Support for Laravel 10.x, 11.x, and 12.x
+
+All repositories are generated following best practices and SOLID principles by default.

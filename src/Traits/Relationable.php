@@ -9,25 +9,26 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 trait Relationable
 {
     /**
-     * relationable.
+     * Enable/disable eager loading
      *
      * @var bool
      */
-    protected $relationable = false;
+    protected bool $relationable = false;
 
     /**
-     * field allowed to get relation.
+     * Relationships allowed to be loaded
      *
-     * @var array
+     * @var array<string>
      */
-    protected $relationAllowed = [];
+    protected array $relationAllowed = [];
 
     /**
-     * relation autoload.
+     * Relationships to autoload (deprecated, use relationAllowed instead)
      *
-     * @var mixed
+     * @var string|array|null
+     * @deprecated Use relationAllowed instead
      */
-    protected $relation = null;
+    protected string|array|null $relation = null;
 
     /**
      * apply relation.
