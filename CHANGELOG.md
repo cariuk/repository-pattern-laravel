@@ -7,7 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added - Major OOP Refactoring (2026-01-18)
+---
+
+## [3.1.0] - 2026-06-01
+
+### Added
+
+#### Type Safety Enhancements
+- **SortDirection enum integration** - Reading trait now uses SortDirection enum for type-safe sorting
+- Full type hints for all Reading trait properties (`bool`, `int`, `array<string>`, `?string`)
+- Full type hints for all Relationable trait properties
+- Generic type annotations for better IDE support and static analysis
+
+### Changed
+
+#### Trait Modernization
+- **Reading trait** - Complete modernization with PHP 8.1+ type hints
+  - All properties now have explicit type declarations
+  - Method signatures updated with union types (`int|string`, `?bool`)
+  - Improved PHPDoc with comprehensive parameter documentation
+  - Eliminated primitive obsession by using SortDirection enum
+- **Relationable trait** - Type safety improvements
+  - Added type hints to all properties
+  - Marked `$relation` property as @deprecated in favor of `$relationAllowed`
+
+#### Documentation
+- **COMMAND_IMPROVEMENTS.md** - Complete restructure and simplification
+  - Added Laravel 12.x compatibility matrix
+  - Converted Benefits section to clean table format
+  - Streamlined examples and removed redundancy
+  - Reduced from 479 to 425 lines while improving clarity
+
+### Performance
+- Eliminated string comparisons in favor of enum matching
+- Better code optimization through type declarations
+- Improved IDE autocomplete and refactoring capabilities
+
+### Backward Compatibility
+- ✅ 100% backward compatible with v3.0.0
+- All existing repositories work without modification
+- No breaking changes to public APIs
+
+---
+
+## [3.0.0] - 2026-01-18
+
+### Added - Major OOP Refactoring
 
 #### New Infrastructure
 - **TransactionManagerInterface** - Abstraction for database transactions (DIP compliance)
@@ -198,7 +243,8 @@ No breaking changes! Your existing code will work as-is.
 
 ## Version History
 
-- **3.0.0** (Unreleased) - Major OOP refactoring, SOLID compliance
+- **3.1.0** (2026-06-01) - Trait modernization, complete type safety
+- **3.0.0** (2026-01-18) - Major OOP refactoring, SOLID compliance
 - **2.2.0** - Laravel 12 support
 - **2.1.0** - Laravel 11 support
 - **2.0.0** - Laravel 10 support, modern PHP
